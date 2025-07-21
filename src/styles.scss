@@ -1,7 +1,8 @@
-@use '~@carbon/styles' with (
-  $prefix: 'bx'
+@use '@carbon/react' with (
+  $prefix: 'bx',
+  $use-flexbox-grid: true,
+  $font-path: '@ibm/plex'
 );
-@use '~@carbon/grid/scss';
 
 body {
     background-color: #bbfad5;

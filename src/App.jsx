@@ -9,8 +9,8 @@ function App() {
       <br />
       <div>
         <div className="bx--row">
-          <div className="bx--col-sm-4 bg1">First Column</div>
-          <div className="bx--col-sm-4 bg2">Second Column</div>
+          <div className="bx--col-md-4 bg1">First Column</div>
+          <div className="bx--col-md-4 bg2">Second Column</div>
         </div>
         <br />
         <hr />
