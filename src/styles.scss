@@ -1,4 +1,7 @@
-@import "~carbon-components/scss/globals/scss/styles.scss";
+@use '~@carbon/styles' with (
+  $prefix: 'bx'
+);
+@use '~@carbon/grid/scss';
 
 body {
     background-color: #bbfad5;

@@ -1,7 +1,6 @@
 import React from "react";
-import { Accordion, AccordionItem } from "carbon-components-react";
+import { Accordion, AccordionItem } from "@carbon/react";
 import "./styles.scss";
-import logo from "./logo.svg";
 
 function App() {
   return (

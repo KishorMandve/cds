@@ -1,16 +1,24 @@
+const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   // uncomment line below in case you want to change entry point
   entry: './src/index.jsx', // to change entry point
   module: {
     rules: [
       {
-       test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        test: /\.(js|jsx?)$/,
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/@carbon/react'),
+          path.resolve(__dirname, 'node_modules/@carbon/utilities'),
+        ],
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.html$/,
@@ -22,18 +30,13 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
-      },
-      {
-        test: /\.s[ac]ss$/i,
+        test: /\.(sa|sc|c)ss$/i,
         use: [
           'style-loader',    // Inject CSS into DOM
           'css-loader',      // Translate CSS into CommonJS
           {
             loader: 'sass-loader', // Compile Sass to CSS
             options: {
-              implementation: require('node-sass'), // Use node-sass explicitly
               sassOptions: {
                 includePaths: ['src/'],
               },
@@ -60,10 +63,6 @@ module.exports = {
       // template: "./src_1/index.html", 
       template: "./src/index.html", 
       filename: "./index.html"
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
     })
   ],
   resolve: {
